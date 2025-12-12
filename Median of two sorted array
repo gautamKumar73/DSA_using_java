@@ -1,0 +1,41 @@
+Leetcode Question No 4(hard)
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+Code*****
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+     int size=nums1.length+nums2.length;
+      double ans=0.0;
+        int []arr=new int[size];
+        for(int i=0,x=0,y=0;i<arr.length;i++)
+        {
+            if(x<nums1.length)
+            {
+                arr[i]=nums1[x];
+                x++;
+            }
+            else if(y<nums2.length)
+            {
+                arr[i]=nums2[y];
+                y++;
+            }
+        }
+        Arrays.sort(arr);
+        int l=arr.length;
+        int median=l/2;
+        
+
+    if(l%2==0)
+    {
+     ans=(arr[median]+arr[median-1])/2.0;
+     
+    }else{
+        return arr[median];
+    }
+    
+    return ans;
+    }
+}
